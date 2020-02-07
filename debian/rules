@@ -7,7 +7,9 @@ debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS) -fPIC
 
 FLAVOURS := core full light extras
 DYN_MODS := \
+	http-auth-ldap \
 	http-auth-pam \
+	http-brotli \
 	http-cache-purge \
 	http-dav-ext \
 	http-echo \
@@ -19,14 +21,17 @@ DYN_MODS := \
 	http-lua \
 	http-ndk \
 	http-perl \
+	http-stream-server-traffic-status \
 	http-subs-filter \
 	http-uploadprogress \
 	http-upstream-fair \
+	http-upsync \
 	http-xslt-filter \
+	http-vhost-traffic-status \
 	mail \
 	nchan \
 	rtmp \
-	stream
+	stream-server-traffic-status
 
 MODULESDIR = $(CURDIR)/debian/modules
 BASEDIR = $(CURDIR)
@@ -95,7 +100,7 @@ core_configure_flags := \
                         --with-http_image_filter_module=dynamic \
                         --with-http_sub_module \
                         --with-http_xslt_module=dynamic \
-                        --with-stream=dynamic \
+                        --with-stream \
                         --with-stream_ssl_module \
                         --with-mail=dynamic \
                         --with-mail_ssl_module
@@ -109,17 +114,24 @@ full_configure_flags := \
 			--with-http_image_filter_module=dynamic \
 			--with-http_sub_module \
 			--with-http_xslt_module=dynamic \
-			--with-stream=dynamic \
+			--with-stream \
 			--with-stream_ssl_module \
 			--with-stream_ssl_preread_module \
 			--with-mail=dynamic \
 			--with-mail_ssl_module \
+			--add-module=$(MODULESDIR)/http-upstream-check \
+			--add-dynamic-module=$(MODULESDIR)/http-auth-ldap \
 			--add-dynamic-module=$(MODULESDIR)/http-auth-pam \
+			--add-dynamic-module=$(MODULESDIR)/http-brotli \
 			--add-dynamic-module=$(MODULESDIR)/http-dav-ext \
 			--add-dynamic-module=$(MODULESDIR)/http-echo \
 			--add-dynamic-module=$(MODULESDIR)/http-upstream-fair \
 			--add-dynamic-module=$(MODULESDIR)/http-subs-filter \
-			--add-dynamic-module=$(MODULESDIR)/http-geoip2
+			--add-dynamic-module=$(MODULESDIR)/http-geoip2 \
+			--add-dynamic-module=$(MODULESDIR)/http-upsync \
+			--add-dynamic-module=$(MODULESDIR)/http-stream-server-traffic-status \
+			--add-dynamic-module=$(MODULESDIR)/http-vhost-traffic-status \
+			--add-dynamic-module=$(MODULESDIR)/stream-server-traffic-status
 
 extras_configure_flags := \
 			$(common_configure_flags) \
@@ -137,11 +149,15 @@ extras_configure_flags := \
 			--with-http_xslt_module=dynamic \
 			--with-mail=dynamic \
 			--with-mail_ssl_module \
-			--with-stream=dynamic \
+			--with-stream \
 			--with-stream_ssl_module \
 			--with-stream_ssl_preread_module \
+			--add-module=$(MODULESDIR)/http-upstream-check \
+			--add-dynamic-module=$(MODULESDIR)/http-upsync \
 			--add-dynamic-module=$(MODULESDIR)/http-headers-more-filter \
+			--add-dynamic-module=$(MODULESDIR)/http-auth-ldap \
 			--add-dynamic-module=$(MODULESDIR)/http-auth-pam \
+			--add-dynamic-module=$(MODULESDIR)/http-brotli \
 			--add-dynamic-module=$(MODULESDIR)/http-cache-purge \
 			--add-dynamic-module=$(MODULESDIR)/http-dav-ext \
 			--add-dynamic-module=$(MODULESDIR)/http-ndk \
@@ -153,7 +169,10 @@ extras_configure_flags := \
 			--add-dynamic-module=$(MODULESDIR)/http-uploadprogress \
 			--add-dynamic-module=$(MODULESDIR)/http-upstream-fair \
 			--add-dynamic-module=$(MODULESDIR)/http-subs-filter \
-			--add-dynamic-module=$(MODULESDIR)/http-geoip2
+			--add-dynamic-module=$(MODULESDIR)/http-geoip2 \
+			--add-dynamic-module=$(MODULESDIR)/http-stream-server-traffic-status \
+			--add-dynamic-module=$(MODULESDIR)/http-vhost-traffic-status \
+			--add-dynamic-module=$(MODULESDIR)/stream-server-traffic-status
 
 %:
 	dh $@ --without autoreconf

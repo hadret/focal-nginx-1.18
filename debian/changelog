@@ -1,6 +1,14 @@
+nginx (1.17.8-0+focal1) focal; urgency=medium
+
+  * Non-maintainer upload.
+  * New upstream release (1.17.8) - full changelog available from
+    http://nginx.org/en/CHANGES
+
+ -- Filip Chabik <hadret@gmail.com>  Fri, 07 Feb 2020 18:45:52 +0000
+
 nginx (1.17.7-0ubuntu1) focal; urgency=medium
 
-  * New upstream release (1.17.7) - full changelog available from 
+  * New upstream release (1.17.7) - full changelog available from
     http://nginx.org/en/CHANGES
   * Remaining Ubuntu-specific changes:
     - debian/patches/ubuntu-branding.patch: add Ubuntu branding (refreshed)
