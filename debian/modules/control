@@ -34,7 +34,7 @@ Patch:
 
 Module: nchan
 Homepage: https://github.com/slact/nchan
-Version: 1.2.6
+Version: 1.2.7
 Files-Excluded: dev nchan_logo.png NchanSubscriber.js
 
 Module: http-uploadprogress
@@ -96,3 +96,4 @@ Version: v0.1.1
 Module: http-stream-server-traffic-status
 Homepage: https://github.com/vozlt/nginx-module-sts
 Version: v0.1.1
+
