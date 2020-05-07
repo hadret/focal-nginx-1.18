@@ -1,0 +1,4 @@
+version=4
+opts="dversionmangle=s/v//,filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%modsecurity-nginx-$1.tar.gz%" \
+    https://github.com/SpiderLabs/ModSecurity-nginx/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian debian/ngxmod uupdate http-modsecurity

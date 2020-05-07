@@ -15,6 +15,7 @@ Build-Depends: debhelper (>= 10),
                libldap2-dev,
                liblua5.1-0-dev [!i386 !amd64 !kfreebsd-i386 !armel !armhf !powerpc !powerpcspe !mips !mipsel],
                libluajit-5.1-dev [i386 amd64 kfreebsd-i386 armel armhf powerpc powerpcspe mips mipsel],
+               libmodsecurity-dev,
                libmaxminddb-dev,
                libmhash-dev,
                libpam0g-dev,
@@ -112,6 +113,7 @@ Depends: libnginx-mod-http-auth-ldap (= ${binary:Version}),
          libnginx-mod-http-geoip (= ${binary:Version}),
          libnginx-mod-http-geoip2 (= ${binary:Version}),
          libnginx-mod-http-image-filter (= ${binary:Version}),
+         libnginx-mod-http-modsecurity (= ${binary:Version}),
          libnginx-mod-http-stream-server-traffic-status (= ${binary:Version}),
          libnginx-mod-http-subs-filter (= ${binary:Version}),
          libnginx-mod-http-upstream-fair (= ${binary:Version}),
@@ -193,6 +195,7 @@ Depends: libnginx-mod-http-auth-ldap (= ${binary:Version}),
          libnginx-mod-http-headers-more-filter (= ${binary:Version}),
          libnginx-mod-http-image-filter (= ${binary:Version}),
          libnginx-mod-http-lua (= ${binary:Version}),
+         libnginx-mod-http-modsecurity (= ${binary:Version}),
          libnginx-mod-http-perl (= ${binary:Version}),
          libnginx-mod-http-stream-server-traffic-status (= ${binary:Version}),
          libnginx-mod-http-subs-filter (= ${binary:Version}),
@@ -502,3 +505,12 @@ Description: stream server traffic status module for Nginx
  server stats and
  .
  This package provides second module necessary to run STS.
+
+Package: libnginx-mod-http-modsecurity
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: ModSecurity v3 module for Nginx
+ The ModSecurity-nginx connector is the connection point between nginx and
+ libmodsecurity (ModSecurity v3). Said another way, this project provides a
+ communication channel between nginx and libmodsecurity. This connector is
+ required to use LibModSecurity with nginx.

@@ -97,3 +97,6 @@ Module: http-stream-server-traffic-status
 Homepage: https://github.com/vozlt/nginx-module-sts
 Version: v0.1.1
 
+Module: http-modsecurity
+Homepage: https://github.com/SpiderLabs/ModSecurity-nginx
+Version: v1.0.1

@@ -19,6 +19,7 @@ DYN_MODS := \
 	http-headers-more-filter \
 	http-image-filter \
 	http-lua \
+	http-modsecurity \
 	http-ndk \
 	http-perl \
 	http-stream-server-traffic-status \
@@ -128,6 +129,7 @@ full_configure_flags := \
 			--add-dynamic-module=$(MODULESDIR)/http-upstream-fair \
 			--add-dynamic-module=$(MODULESDIR)/http-subs-filter \
 			--add-dynamic-module=$(MODULESDIR)/http-geoip2 \
+			--add-dynamic-module=$(MODULESDIR)/http-modsecurity \
 			--add-dynamic-module=$(MODULESDIR)/http-upsync \
 			--add-dynamic-module=$(MODULESDIR)/http-stream-server-traffic-status \
 			--add-dynamic-module=$(MODULESDIR)/http-vhost-traffic-status \
@@ -166,6 +168,7 @@ extras_configure_flags := \
 			--add-dynamic-module=$(MODULESDIR)/nchan \
 			--add-dynamic-module=$(MODULESDIR)/http-lua \
 			--add-dynamic-module=$(MODULESDIR)/rtmp \
+			--add-dynamic-module=$(MODULESDIR)/http-modsecurity \
 			--add-dynamic-module=$(MODULESDIR)/http-uploadprogress \
 			--add-dynamic-module=$(MODULESDIR)/http-upstream-fair \
 			--add-dynamic-module=$(MODULESDIR)/http-subs-filter \
