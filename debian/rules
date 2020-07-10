@@ -15,7 +15,7 @@ DYN_MODS := \
 	http-echo \
 	http-fancyindex \
 	http-geoip \
-        http-geoip2 \
+	http-geoip2 \
 	http-headers-more-filter \
 	http-image-filter \
 	http-lua \
@@ -95,7 +95,6 @@ light_configure_flags := \
 core_configure_flags := \
                         $(common_configure_flags) \
                         --with-http_addition_module \
-                        --with-http_geoip_module=dynamic \
                         --with-http_gunzip_module \
                         --with-http_gzip_static_module \
                         --with-http_image_filter_module=dynamic \

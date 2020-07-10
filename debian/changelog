@@ -1,45 +1,167 @@
-nginx (1.18.0-0+focal2) focal; urgency=medium
+nginx (1.18.0-0+focal3) focal; urgency=medium
 
   * Non-maintainer upload.
   * Introduce support for ModSecurity v3 dynamic module.
+  * Sync with Ubuntu upstream packaging.
 
- -- Filip Chabik <hadret@gmail.com>  Thu, 07 May 2020 11:19:10 +0000
+ -- Filip Chabik <hadret@gmail.com>  Fri, 10 Jul 2020 09:15:26 +0000
 
-nginx (1.18.0-0+focal1) focal; urgency=medium
+nginx (1.18.0-0ubuntu1) focal; urgency=medium
 
-  * Non-maintainer upload.
-  * New upstream release (1.18.0) - full changelog available from
+  * Stable Release Update for Version String (LP: #1875231)
+  * New upstream Stable release (1.18.0) - full changelog available from
     http://nginx.org/en/CHANGES
+  * Remaining Ubuntu-specific changes:
+    - debian/patches/ubuntu-branding.patch: add Ubuntu branding (refreshed)
+    - d/{control,rules,nginx-core.*}: add new binary package for main,
+      nginx-core, which contains only source-tarball-included modules
+      and no third-party modules.
+    - debian/tests/control: add nginx-core test.
+    - debian/apport/source_nginx.py: Add apport hooks for additional bug
+      information gathering.
+    - debian/nginx-common.install: Add install rule for apport hooks.
+    - d/nginx-{core,light,full,extras}.postinst: Add checks for whether
+      port 80 is in use or not to determine whether or not to attempt
+      starting of the NGINX service during install/upgrade
+    - d/control: Add dependencies to nginx-{core,light,full,extras} on
+      `iproute2` as the postinst scripts now use `ss` to determine if
+      Port 80 is open or not.
+    - d/rules: Enable --with-compat build option for all nginx package
+      flavors
+    - d/{control,rules,copyright,modules/http-geoip2*}: Add GeoIP2 third party
+      module to nginx-full and nginx-extras (and use proper DEP5 syntax for
+      d/copyright).
+    - d/control, d/rules: Drop GeoIP from nginx-core due to demotion of
+      libgeoip.
 
- -- Filip Chabik <hadret@gmail.com>  Sat, 25 Apr 2020 09:11:16 +0000
+ -- Thomas Ward <teward@ubuntu.com>  Tue, 21 Apr 2020 10:49:01 -0400
 
-nginx (1.17.10-0+focal1) focal; urgency=medium
+nginx (1.17.10-0ubuntu1) focal; urgency=medium
 
-  * Non-maintainer upload.
-  * New upstream release (1.17.10) - full changelog available from
-    http://nginx.org/en/CHANGES
-
- -- Filip Chabik <hadret@gmail.com>  Fri, 17 Apr 2020 11:28:06 +0000
-
-nginx (1.17.9-0+focal1) focal; urgency=medium
-
-  * Non-maintainer upload.
   * New upstream release (1.17.9) - full changelog available from
     http://nginx.org/en/CHANGES
+  * Remaining Ubuntu-specific changes:
+    - debian/patches/ubuntu-branding.patch: add Ubuntu branding (refreshed)
+    - d/{control,rules,nginx-core.*}: add new binary package for main,
+      nginx-core, which contains only source-tarball-included modules
+      and no third-party modules.
+    - debian/tests/control: add nginx-core test.
+    - debian/apport/source_nginx.py: Add apport hooks for additional bug
+      information gathering.
+    - debian/nginx-common.install: Add install rule for apport hooks.
+    - d/nginx-{core,light,full,extras}.postinst: Add checks for whether
+      port 80 is in use or not to determine whether or not to attempt
+      starting of the NGINX service during install/upgrade
+    - d/control: Add dependencies to nginx-{core,light,full,extras} on
+      `iproute2` as the postinst scripts now use `ss` to determine if
+      Port 80 is open or not.
+    - d/rules: Enable --with-compat build option for all nginx package
+      flavors
+    - d/{control,rules,copyright,modules/http-geoip2*}: Add GeoIP2 third party
+      module to nginx-full and nginx-extras (and use proper DEP5 syntax for
+      d/copyright).
+    - d/control, d/rules: Drop GeoIP from nginx-core due to demotion of 
+      libgeoip.
 
- -- Filip Chabik <hadret@gmail.com>  Sat, 14 Mar 2020 10:30:29 +0000
+ -- Thomas Ward <teward@ubuntu.com>  Tue, 14 Apr 2020 12:53:34 -0400
 
-nginx (1.17.8-0+focal1) focal; urgency=medium
+nginx (1.17.9-0ubuntu3) focal; urgency=medium
 
-  * Non-maintainer upload.
+  * d/conf/sites-available/default: Update PHP path for PHP 7.4.
+
+ -- Thomas Ward <teward@ubuntu.com>  Thu, 26 Mar 2020 10:53:52 -0400
+
+nginx (1.17.9-0ubuntu2) focal; urgency=medium
+
+  * Drop GeoIP from nginx-core due to demotion of libgeoip (LP: #1861101,
+    LP: #1867150):
+    - d/control: Remove libnginx-mod-http-geoip from nginx-core dependency
+    - d/rules: Remove the configure line of with-http_geoip_module=dynamic
+      from the nginx-core build flags, due to demotion of libgeoip and the
+      removal of the dynamic library from install deps for nginx-core. 
+
+ -- Thomas Ward <teward@ubuntu.com>  Wed, 11 Mar 2020 13:41:07 -0400
+
+nginx (1.17.9-0ubuntu1) focal; urgency=medium
+
+  * New upstream release (1.17.9) - full changelog available from
+    http://nginx.org/en/CHANGES
+  * Remaining Ubuntu-specific changes:
+    - debian/patches/ubuntu-branding.patch: add Ubuntu branding (refreshed)
+    - d/{control,rules,nginx-core.*}: add new binary package for main,
+      nginx-core, which contains only source-tarball-included modules
+      and no third-party modules.
+    - debian/tests/control: add nginx-core test.
+    - debian/apport/source_nginx.py: Add apport hooks for additional bug
+      information gathering.
+    - debian/nginx-common.install: Add install rule for apport hooks.
+    - d/nginx-{core,light,full,extras}.postinst: Add checks for whether
+      port 80 is in use or not to determine whether or not to attempt
+      starting of the NGINX service during install/upgrade
+    - d/control: Add dependencies to nginx-{core,light,full,extras} on
+      `iproute2` as the postinst scripts now use `ss` to determine if
+      Port 80 is open or not.
+    - d/rules: Enable --with-compat build option for all nginx package
+      flavors
+    - d/{control,rules,copyright,modules/http-geoip2*}: Add GeoIP2 third party
+      module to nginx-full and nginx-extras (and use proper DEP5 syntax for
+      d/copyright).
+
+ -- Thomas Ward <teward@ubuntu.com>  Tue, 03 Mar 2020 11:05:45 -0500
+
+nginx (1.17.8-0ubuntu3) focal; urgency=medium
+
+  * d/conf/sites-available/default: Indentation consistency.
+    Fix an indentation issue introduced by 1.17.8-0ubuntu2 to make sure that 
+    indentation in the default config file is consistent.
+
+ -- Thomas Ward <teward@ubuntu.com>  Wed, 26 Feb 2020 10:35:13 -0500
+
+nginx (1.17.8-0ubuntu2) focal; urgency=medium
+
+  * d/conf/sites-available/default: Revert changes done in #1743592.
+    Reverts this change:
+      - d/conf/sites-available/default: Update default nginx site
+        configuration file to remove the IPv6 listening line so that servers
+        running without IPv6 enabled at all on the system will start nginx 
+        properly.
+
+ -- Thomas Ward <teward@ubuntu.com>  Thu, 20 Feb 2020 13:52:32 -0500
+
+nginx (1.17.8-0ubuntu1) focal; urgency=medium
+
   * New upstream release (1.17.8) - full changelog available from
     http://nginx.org/en/CHANGES
+  * Remaining Ubuntu-specific changes:
+    - debian/patches/ubuntu-branding.patch: add Ubuntu branding (refreshed)
+    - d/{control,rules,nginx-core.*}: add new binary package for main,
+      nginx-core, which contains only source-tarball-included modules
+      and no third-party modules.
+    - debian/tests/control: add nginx-core test.
+    - debian/apport/source_nginx.py: Add apport hooks for additional bug
+      information gathering.
+    - debian/nginx-common.install: Add install rule for apport hooks.
+    - d/nginx-{core,light,full,extras}.postinst: Add checks for whether
+      port 80 is in use or not to determine whether or not to attempt
+      starting of the NGINX service during install/upgrade
+    - d/control: Add dependencies to nginx-{core,light,full,extras} on
+      `iproute2` as the postinst scripts now use `ss` to determine if
+      Port 80 is open or not.
+    - d/rules: Enable --with-compat build option for all nginx package
+      flavors
+    - d/{control,rules,copyright,modules/http-geoip2*}: Add GeoIP2 third party
+      module to nginx-full and nginx-extras (and use proper DEP5 syntax for
+      d/copyright).
+    - d/conf/sites-available/default: Update default nginx site configuration
+      file to remove the IPv6 listening line so that servers running without
+      IPv6 enabled at all on the system will start nginx properly.
+      (LP: #1743592)
 
- -- Filip Chabik <hadret@gmail.com>  Fri, 07 Feb 2020 18:45:52 +0000
+ -- Thomas Ward <teward@ubuntu.com>  Tue, 18 Feb 2020 19:01:02 -0500
 
 nginx (1.17.7-0ubuntu1) focal; urgency=medium
 
-  * New upstream release (1.17.7) - full changelog available from
+  * New upstream release (1.17.7) - full changelog available from 
     http://nginx.org/en/CHANGES
   * Remaining Ubuntu-specific changes:
     - debian/patches/ubuntu-branding.patch: add Ubuntu branding (refreshed)

@@ -1,7 +1,7 @@
 Description: Add Ubuntu token to NGINX_VER
 Author: Adam Conrad <adconrad@ubuntu.com>
 Forwarded: not-needed
-Last-Update: 2019-12-30
+Last-Update: 2020-04-21
 
 ---
  src/core/nginx.h |    2 +-

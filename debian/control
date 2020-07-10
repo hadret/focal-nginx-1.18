@@ -71,8 +71,7 @@ Description: small, powerful, scalable web/proxy server - common files
 
 Package: nginx-core
 Architecture: any
-Depends: libnginx-mod-http-geoip (= ${binary:Version}),
-         libnginx-mod-http-image-filter (= ${binary:Version}),
+Depends: libnginx-mod-http-image-filter (= ${binary:Version}),
          libnginx-mod-http-xslt-filter (= ${binary:Version}),
          libnginx-mod-mail (= ${binary:Version}),
          nginx-common (= ${source:Version}),
@@ -96,7 +95,7 @@ Description: nginx web/proxy server (standard version)
  GIF, FastCGI, Geo, Limit Connections, Limit Requests, Map, Memcached, Proxy,
  Referer, Rewrite, SCGI, Split Clients, UWSGI.
  .
- OPTIONAL HTTP MODULES: Addition, Auth Request, Charset, WebDAV, GeoIP, Gunzip,
+ OPTIONAL HTTP MODULES: Addition, Auth Request, Charset, WebDAV, Gunzip,
  Gzip, Gzip Precompression, Headers, HTTP/2, Image Filter, Index, Log, Real IP,
  Slice, SSI, SSL, Stream, Stub Status, Substitution, Thread Pool, Upstream,
  User ID, XSLT.
