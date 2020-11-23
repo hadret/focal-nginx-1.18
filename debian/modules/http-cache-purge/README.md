@@ -222,6 +222,11 @@ Sample configuration (Optional)
 
 
 
+Solve problems
+==============
+* Enabling [`gzip_vary`](https://nginx.org/r/gzip_vary) can lead to different results when clearing, when enabling it, you may have problems clearing the cache. For reliable operation, you can disable [`gzip_vary`](https://nginx.org/r/gzip_vary) inside the location [#20](https://github.com/nginx-modules/ngx_cache_purge/issues/20).
+
+
 Testing
 =======
 `ngx_cache_purge` comes with complete test suite based on [Test::Nginx](http://github.com/agentzh/test-nginx).
