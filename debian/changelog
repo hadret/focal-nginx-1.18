@@ -1,3 +1,16 @@
+nginx (1.18.0-0+focal5) focal; urgency=medium
+
+  * Non-maintainer upload.
+  * Backport DNS Resolver issues patches from upstream Ubuntu:
+  * Marc Deslauriers <email address hidden>
+    - debian/patches/CVE-2021-23017-1.patch: fixed off-by-one write in
+      src/core/ngx_resolver.c.
+    - debian/patches/CVE-2021-23017-2.patch: fixed off-by-one read in
+      src/core/ngx_resolver.c.
+    - CVE-2021-23017
+
+ -- Filip Chabik <hadret@hey.com>  Thu, 03 Jun 2021 14:53:15 +0000
+
 nginx (1.18.0-0+focal4) focal; urgency=medium
 
   * Non-maintainer upload.

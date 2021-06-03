@@ -3,3 +3,5 @@
 0003-define_gnu_source-on-other-glibc-based-platforms.patch
 ubuntu-branding.patch
 nginx-fix-pidfile.patch
+CVE-2021-23017-1.patch
+CVE-2021-23017-2.patch
